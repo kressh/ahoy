@@ -10,7 +10,7 @@ module Ahoy
     end
 
     def track(name, properties = {}, options = {})
-      if exclude?
+      if exclude? && !options[:force]
         debug "Event excluded"
       elsif missing_params?
         debug "Missing required parameters"
@@ -28,7 +28,7 @@ module Ahoy
     end
 
     def track_visit(options = {})
-      if exclude?
+      if exclude? && !options[:force]
         debug "Visit excluded"
       elsif missing_params?
         debug "Missing required parameters"
